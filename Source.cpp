@@ -93,7 +93,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 						const LPBYTE pIconImage = (LPBYTE)malloc(pIconDirEntries[i].dwBytesInRes);
 						SetFilePointer(hFile, pIconDirEntries[i].dwImageOffset, NULL, FILE_BEGIN);
 						ReadFile(hFile, pIconImage, pIconDirEntries[i].dwBytesInRes, &dwBytesRead, NULL);
-						TCHAR szText[1024];
+						TCHAR szText[1024] = { 0 };
 						if (pIconImage[0] == 0x89 && pIconImage[1] == 0x50 && pIconImage[2] == 0x4e && pIconImage[3] == 0x47 &&
 							pIconImage[4] == 0x0d && pIconImage[5] == 0x0a && pIconImage[6] == 0x1a && pIconImage[7] == 0x0a)
 						{
